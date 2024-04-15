@@ -86,6 +86,7 @@ sketch
 # *.iml
 # *.ipr
 
+.idea
 # CMake
 cmake-build-*/
 
