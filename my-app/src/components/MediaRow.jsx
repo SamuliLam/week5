@@ -26,4 +26,5 @@ MediaRow.propTypes = {
     media_type: PropTypes.string,
   }).isRequired,
 };
+
 export default MediaRow;
