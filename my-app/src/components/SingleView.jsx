@@ -10,7 +10,7 @@ const SingleView = (props) => {
     <>
       <dialog
         className="fixed top-0 h-dvh w-dvw bg-black bg-opacity-50 p-4 text-stone-100"
-        open={selectedItem ? true : false}
+        open={!!selectedItem}
       >
         <p>
           <Button text="Close" handleClick={handleClick} />
