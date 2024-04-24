@@ -5,7 +5,7 @@ import { Profile } from './views/Profile';
 import Upload from './views/Upload';
 import Layout from './views/Layout';
 import Single from './views/Single';
-import Login from "./views/Login.jsx";
+import Login from "./views/Login";
 
 const App = () => {
   return (

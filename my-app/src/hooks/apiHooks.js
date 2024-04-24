@@ -34,7 +34,7 @@ const useUser = () => {
     }
     const tokenResult = await fetchData(
       import.meta.env.VITE_AUTH_API + '/users/token',
-      options
+      options,
     );
     return tokenResult;
   }

@@ -29,7 +29,11 @@ export const Profile = () => {
     </p>
     <div>
       {user && (
-        <p>Käyttäjätunnus: {user.username}</p>
+        <>
+          <p>Käyttäjätunnus: {user.username} </p>
+          <p>email: {user.email} </p>
+          <p>luotu: {new Date(user.created_at).toLocaleString('fi-FI')}</p>
+        </>
       )}
     </div>
   </div>

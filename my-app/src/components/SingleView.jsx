@@ -7,7 +7,6 @@ const SingleView = (props) => {
     setSelectedItem(null);
   };
   return (
-    <>
       <dialog
         className="fixed top-0 h-dvh w-dvw bg-black bg-opacity-50 p-4 text-stone-100"
         open={!!selectedItem}
@@ -38,7 +37,6 @@ const SingleView = (props) => {
           </>
         )}
       </dialog>
-    </>
   );
 };
 
