@@ -2,7 +2,6 @@ import './App.css';
 import Home from './views/Home';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Profile } from './views/Profile';
-import Upload from './views/Upload';
 import Layout from './views/Layout';
 import Single from './views/Single';
 import Login from './views/Login';
@@ -24,11 +23,6 @@ const App = () => {
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Profile />
-              </ProtectedRoute>
-            } />
-            <Route path="/upload" element={
-              <ProtectedRoute>
-                <Upload />
               </ProtectedRoute>
             } />
             <Route path="/media/:id" element={<Single />} />
