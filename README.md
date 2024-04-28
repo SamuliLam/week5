@@ -1,1 +1,1 @@
-Open [https://users.metropolia.fi/~samullam/wsk-routing/] to view it in the browser
+Open https://users.metropolia.fi/~samullam/custom-hooks/ to view it in the browser
