@@ -15,8 +15,8 @@ const LoginForm = () => {
       console.log('userData', userData);
       localStorage.setItem('token', userData.token);
       navigate('/');
-    } catch (error) {
-      alert(error.message);
+    } catch (e) {
+      alert(e.message)
     }
   }
   const {handleSubmit, handleInputChange, inputs} = useForm(

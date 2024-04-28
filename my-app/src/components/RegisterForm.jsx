@@ -1,9 +1,9 @@
 import useForm from "../hooks/formHooks.js";
-import {useAuthentication} from "../hooks/apiHooks.js";
-import Button from '../components/UI/Button';
+import { useUser} from "../hooks/apiHooks.js";
+import Button from "./UI/Button.jsx";
 
 const RegisterForm = () => {
-  const {register} = useAuthentication();
+  const {register} = useUser();
   const initValues = {
     username: "",
     password: "",
@@ -22,6 +22,7 @@ const RegisterForm = () => {
     doRegister,
     initValues
   );
+  console.log(inputs)
   return (
     <>
       <h1>Register</h1>
@@ -36,14 +37,14 @@ const RegisterForm = () => {
           />
         </div>
         <div>
-        <label htmlFor="registeremail">Email</label>
-        <input
-          name="email"
-          type="email"
-          id="registeremail"
-          onChange={handleInputChange}
-        />
-      </div>
+          <label htmlFor="registeremail">Email</label>
+          <input
+            name="email"
+            type="email"
+            id="registeremail"
+            onChange={handleInputChange}
+          />
+        </div>
         <div>
           <label htmlFor="registerpassword">Password</label>
           <input
@@ -51,9 +52,10 @@ const RegisterForm = () => {
             type="password"
             id="registerpassword"
             onChange={handleInputChange}
+            autoComplete="current-password"
           />
         </div>
-        <Button text="Register"/>
+        <Button text={"Register"} />
       </form>
     </>
   );

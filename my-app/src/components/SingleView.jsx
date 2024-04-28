@@ -7,8 +7,8 @@ const SingleView = (props) => {
     setSelectedItem(null);
   };
   return (
+
       <dialog
-        className="fixed top-0 h-dvh w-dvw bg-black bg-opacity-50 p-4 text-stone-100"
         open={!!selectedItem}
       >
         <p>
@@ -17,7 +17,7 @@ const SingleView = (props) => {
         {selectedItem && (
           <>
             {selectedItem.media_type.includes('video') ? (
-              <video className="m-auto h-3/4 content-center" controls>
+              <video controls>
                 <source
                   src={selectedItem.filename}
                   type={selectedItem.media_type}
@@ -25,7 +25,6 @@ const SingleView = (props) => {
               </video>
             ) : (
               <img
-                className="m-auto h-3/4"
                 src={selectedItem.filename}
                 alt={selectedItem.title}
               />

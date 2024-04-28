@@ -1,4 +1,4 @@
-const fetchData = async ( url, options = {}) => {
+const fetchData = async (url, options = {}) => {
   // console.log('fetching data from url: ', url);
   const response = await fetch(url, options);
   const json = await response.json();
