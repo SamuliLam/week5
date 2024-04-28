@@ -1,54 +1,56 @@
-// UserContext.jsx
-import { createContext, useState, useContext } from 'react';
-import { useAuthentication, useUser } from '../hooks/apiHooks';
-import { useNavigate } from 'react-router-dom';
+import { createContext, useContext, useState } from "react";
+import { useAuthentication, useUser } from "../hooks/apiHooks";
+import { useNavigate } from "react-router-dom";
 
-const UserContext = createContext(null);
+const UserContext = createContext()
 
-const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const { postLogin } = useAuthentication();
-  const { getUserByToken } = useUser();
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState()
+  const { login } = useAuthentication();
   const navigate = useNavigate();
+  const { getUserByToken } = useUser();
 
-  // login, logout and autologin functions are here instead of components
+  console.log("user in UserProvider", user)
+
   const handleLogin = async (credentials) => {
+    console.log("credentials", credentials);
+    console.log({ credentials });
     try {
-      // TODO: post login credentials to API
-      // TODO: set token to local storage
-      // TODO: set user to state
-      // TODO: navigate to home
-    } catch (e) {
-      console.log(e.message);
+      const userData = await login(credentials);
+      console.log('userData', userData);
+      localStorage.setItem('token', userData.token);
+      setUser(userData.user) // tämä lisää contextiin userin kirjautumisessa
+      navigate('/');
+    } catch (error) {
+      alert(error.message);
     }
   };
 
   const handleLogout = () => {
-    try {
-      // TODO: remove token from local storage
-      // TODO: set user to null
-      // TODO: navigate to home
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
+    localStorage.removeItem('token')
+    setUser(undefined)
+    navigate("/")
+  }
 
-  // handleAutoLogin is used when the app is loaded to check if there is a valid token in local storage
   const handleAutoLogin = async () => {
     try {
-      // TODO: get token from local storage
-      // TODO: if token exists, get user data from API
-      // TODO: set user to state
-      // TODO: navigate to home
-    } catch (e) {
-      console.log(e.message);
+      const token = localStorage.getItem('token');
+      if (token) {
+        const userData = await getUserByToken(token);
+        setUser(userData.user);
+        navigate("/")
+      }
+    } catch (error) {
+      console.log(error.message);
     }
-  };
+  }
 
+  // TODO poista setUser ja refaktoroi Profile.jsx
   return (
     <UserContext.Provider value={{ user, handleLogin, handleLogout, handleAutoLogin }}>
       {children}
     </UserContext.Provider>
-  );
-};
-export { UserProvider, UserContext };
+  )
+}
+
+export const useUserContext = () => useContext(UserContext)

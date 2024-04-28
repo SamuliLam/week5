@@ -1,28 +1,31 @@
-import useForm from "../hooks/formHooks.js";
-import { useUser} from "../hooks/apiHooks.js";
-import Button from "./UI/Button.jsx";
+import {useUser} from '../hooks/apiHooks';
+import useForm from '../hooks/formHooks';
+import Button from '../components/UI/Button';
 
 const RegisterForm = () => {
   const {register} = useUser();
+
   const initValues = {
-    username: "",
-    password: "",
-    email: "",
+    username: '',
+    password: '',
+    email: '',
   };
+
   const doRegister = async () => {
-    console.log('doRegister', inputs)
+    console.log('doRegister', inputs);
     try {
       const userData = await register(inputs);
-      console.log('userData', userData);
+      console.log('doRegister', userData);
     } catch (error) {
       alert(error.message);
     }
-  }
+  };
+
   const {handleSubmit, handleInputChange, inputs} = useForm(
     doRegister,
-    initValues
+    initValues,
   );
-  console.log(inputs)
+
   return (
     <>
       <h1>Register</h1>
@@ -52,10 +55,9 @@ const RegisterForm = () => {
             type="password"
             id="registerpassword"
             onChange={handleInputChange}
-            autoComplete="current-password"
           />
         </div>
-        <Button text={"Register"} />
+        <Button text="Register"/>
       </form>
     </>
   );
